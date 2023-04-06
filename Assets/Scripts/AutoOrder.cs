@@ -6,11 +6,12 @@ public class AutoOrder : MonoBehaviour
 {
 
     public bool isOrderingPotions = false;
-    public static int redPotionIncrease = 1;
-    public static int greenPotionIncrease = 0;
-    public static int bluePotionIncrease = 0;
-    public static int goldenPotionIncrease = 0;
-    public static int pinkPotionIncrease = 0;
+
+    public Potion red;
+    public Potion green;
+    public Potion blue;
+    public Potion golden;
+    public Potion pink;
 
 
     // Start is called before the first frame update
@@ -31,11 +32,11 @@ public class AutoOrder : MonoBehaviour
 
     IEnumerator OrderPotions()
     {
-        GlobalPotions.redPotions += redPotionIncrease;
-        GlobalPotions.greenPotions +=greenPotionIncrease;
-        GlobalPotions.bluePotions += bluePotionIncrease;
-        GlobalPotions.goldenPotions += goldenPotionIncrease;
-        GlobalPotions.pinkPotions += pinkPotionIncrease;
+        red.amount += red.orderAmount;
+        green.amount +=green.orderAmount;
+        blue.amount += blue.orderAmount;
+        golden.amount += golden.orderAmount;
+        pink.amount += pink.orderAmount;
 
         yield return new WaitForSeconds(2f/(PurchaseLog.speed+1));
         isOrderingPotions = false;

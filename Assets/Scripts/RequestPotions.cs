@@ -6,14 +6,19 @@ public class RequestPotions : MonoBehaviour
 {
 
     public GameObject Controller;
+    public Potion red;
+    public Potion green;
+    public Potion blue;
+    public Potion golden;
+    public Potion pink;
 
 
     public void manualOrder(){
-        GlobalPotions.redPotions += AutoOrder.redPotionIncrease;
-        GlobalPotions.greenPotions +=AutoOrder.greenPotionIncrease;
-        GlobalPotions.bluePotions += AutoOrder.bluePotionIncrease;
-        GlobalPotions.goldenPotions += AutoOrder.goldenPotionIncrease;
-        GlobalPotions.pinkPotions += AutoOrder.pinkPotionIncrease;
+        red.amount += red.orderAmount;
+        green.amount +=green.orderAmount;
+        blue.amount += blue.orderAmount;
+        golden.amount += golden.orderAmount;
+        pink.amount += pink.orderAmount;
         Controller.GetComponent<AutoOrder>().ResetTimer();
 
     }

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Potion : MonoBehaviour
 {
-    public String name;
+    public new string name;
     public int price;
     public int amount;
     public int orderAmount;
+    public int orderMultiplier;
 
     // Start is called before the first frame update
     void Start()

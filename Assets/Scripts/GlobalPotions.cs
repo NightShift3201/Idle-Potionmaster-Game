@@ -7,23 +7,14 @@ using TMPro;
 public class GlobalPotions : MonoBehaviour
 {
 
-    public static int MoneyCount;
+    public static int MoneyCount = 100;
     public int InternalMoney;
 
-    public static int redPotions;
-    public int internalRedPotions;
-
-    public static int greenPotions;
-    public int internalGreenPotions;
-
-    public static int bluePotions;
-    public int internalBluePotions;
-
-    public static int goldenPotions;
-    public int internalGoldenPotions;
-
-    public static int pinkPotions;
-    public int internalPinkPotions; 
+    public Potion red;
+    public Potion green;
+    public Potion blue;
+    public Potion golden;
+    public Potion pink;
 
 
     public GameObject MoneyDisplay;
@@ -42,21 +33,11 @@ public class GlobalPotions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        internalRedPotions = redPotions;
-        RedPotionDisplay.GetComponent<TextMeshProUGUI>().text = "Red Potions: " + internalRedPotions;
-
-        internalGreenPotions = greenPotions;
-        BluePotionDisplay.GetComponent<TextMeshProUGUI>().text = "Green Potions: " + internalBluePotions;
-
-        internalBluePotions = bluePotions;
-        GreenPotionDisplay.GetComponent<TextMeshProUGUI>().text = "Blue Potions: " + internalGreenPotions;
-
-        internalGoldenPotions = goldenPotions;
-        GoldenPotionDisplay.GetComponent<TextMeshProUGUI>().text = "Golden Potions: " + internalGoldenPotions;
-
-        internalPinkPotions = pinkPotions;
-        PinkPotionDisplay.GetComponent<TextMeshProUGUI>().text = "Pink Potions: " + internalPinkPotions;
-
+        RedPotionDisplay.GetComponent<TextMeshProUGUI>().text = "Red Potions: " + red.amount;
+        GreenPotionDisplay.GetComponent<TextMeshProUGUI>().text = "Green Potions: " + green.amount;
+        BluePotionDisplay.GetComponent<TextMeshProUGUI>().text = "Blue Potions: " + blue.amount;
+        GoldenPotionDisplay.GetComponent<TextMeshProUGUI>().text = "Golden Potions: " + golden.amount;
+        PinkPotionDisplay.GetComponent<TextMeshProUGUI>().text = "Pink Potions: " + pink.amount;
 
         InternalMoney = MoneyCount;
         MoneyDisplay.GetComponent<TextMeshProUGUI>().text = "Balance: " + InternalMoney;
