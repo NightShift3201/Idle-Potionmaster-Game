@@ -45,16 +45,16 @@ public class GlobalPotions : MonoBehaviour
         internalRedPotions = redPotions;
         RedPotionDisplay.GetComponent<TextMeshProUGUI>().text = "Red Potions: " + internalRedPotions;
 
-        internalRedPotions = greenPotions;
+        internalGreenPotions = greenPotions;
         BluePotionDisplay.GetComponent<TextMeshProUGUI>().text = "Green Potions: " + internalBluePotions;
 
-        internalRedPotions = bluePotions;
+        internalBluePotions = bluePotions;
         GreenPotionDisplay.GetComponent<TextMeshProUGUI>().text = "Blue Potions: " + internalGreenPotions;
 
-        internalRedPotions = goldenPotions;
+        internalGoldenPotions = goldenPotions;
         GoldenPotionDisplay.GetComponent<TextMeshProUGUI>().text = "Golden Potions: " + internalGoldenPotions;
 
-        internalRedPotions = pinkPotions;
+        internalPinkPotions = pinkPotions;
         PinkPotionDisplay.GetComponent<TextMeshProUGUI>().text = "Pink Potions: " + internalPinkPotions;
 
 
