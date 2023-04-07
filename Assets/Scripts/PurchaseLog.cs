@@ -6,6 +6,8 @@ public class PurchaseLog : MonoBehaviour
 {
 
     public static int speed = 0;
+    public static int sellSpeed = 0;
+
     public  GameObject Controller;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,13 @@ public class PurchaseLog : MonoBehaviour
         GlobalPotions.MoneyCount-= (speed+1)*25;
         speed+=1;
         SpeedUpgradeButton.turnOffButton =true;
+        
+    }
+
+    public void StartAutoSell(){
+        Controller.GetComponent<AutoSell>().enabled=true;
+        GlobalPotions.MoneyCount-= (sellSpeed+1)*25;
+        sellSpeed+=1;
         
     }
 }

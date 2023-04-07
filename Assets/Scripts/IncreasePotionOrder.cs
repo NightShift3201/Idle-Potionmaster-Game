@@ -10,8 +10,7 @@ public class IncreasePotionOrder : MonoBehaviour
     public GameObject overlayText;
     public GameObject button;
     public GameObject text;
-    public static bool turnOffButton = false;
-    public int potionIndex;
+    public bool turnOffButton = false;
     public Potion potion;
 
     // Start is called before the first frame update
@@ -31,6 +30,11 @@ public class IncreasePotionOrder : MonoBehaviour
             button.SetActive(true);
         }
 
+        if(GlobalPotions.MoneyCount<potion.orderAmount*potion.orderMultiplier+potion.orderMultiplier){
+            button.SetActive(false);
+            overlayButton.SetActive(true);
+            turnOffButton = false;
+        }
         if(turnOffButton == true)
         {
             button.SetActive(false);

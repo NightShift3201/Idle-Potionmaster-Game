@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SpeedUpgradeButton : MonoBehaviour
+public class SalesUpgradeButton : MonoBehaviour
 {
 
     public GameObject overlayButton;
     public GameObject overlayText;
     public GameObject button;
     public GameObject text;
-    public int speedPrice;
+    public int sellPrice;
     public static bool turnOffButton = false;
 
     // Start is called before the first frame update
@@ -23,15 +23,15 @@ public class SpeedUpgradeButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speedPrice  = (PurchaseLog.speed+1) *25;
-        overlayText.GetComponent<TextMeshProUGUI>().text = "Buy Brewer - "+PurchaseLog.speed+"  $" + speedPrice;
-        text.GetComponent<TextMeshProUGUI>().text = "Buy Brewer - "+PurchaseLog.speed+"  $" + speedPrice;
-        if(GlobalPotions.MoneyCount>=speedPrice){
+        sellPrice  = (PurchaseLog.sellSpeed+1) *25;
+        overlayText.GetComponent<TextMeshProUGUI>().text = "Auto Sell - "+PurchaseLog.sellSpeed+"  $" + sellPrice;
+        text.GetComponent<TextMeshProUGUI>().text = "Auto Sell - "+PurchaseLog.sellSpeed+"  $" + sellPrice;
+        if(GlobalPotions.MoneyCount>=sellPrice){
             overlayButton.SetActive(false);
             button.SetActive(true);
         }
 
-        if(GlobalPotions.MoneyCount<speedPrice){
+        if(GlobalPotions.MoneyCount<sellPrice){
             button.SetActive(false);
             overlayButton.SetActive(true);
             turnOffButton = false;
