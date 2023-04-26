@@ -7,8 +7,8 @@ using TMPro;
 public class GlobalPotions : MonoBehaviour
 {
 
-    public static int MoneyCount = 100;
-    public int InternalMoney;
+    public static float MoneyCount = 10000;
+    public float InternalMoney;
 
     public Potion red;
     public Potion green;

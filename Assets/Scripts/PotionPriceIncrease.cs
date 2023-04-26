@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class IncreasePotionOrder : MonoBehaviour
+public class PotionPriceIncrease : MonoBehaviour
 {
     public GameObject overlayButton;
     public GameObject overlayText;
@@ -12,6 +12,7 @@ public class IncreasePotionOrder : MonoBehaviour
     public GameObject text;
     public bool turnOffButton = false;
     public Potion potion;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,15 +23,15 @@ public class IncreasePotionOrder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        overlayText.GetComponent<TextMeshProUGUI>().text = potion.orderAmount +"  $" + (potion.orderAmount*potion.orderMultiplier+potion.orderMultiplier);
-        text.GetComponent<TextMeshProUGUI>().text = potion.orderAmount +"  $" + (potion.orderAmount*potion.orderMultiplier+potion.orderMultiplier);
+        overlayText.GetComponent<TextMeshProUGUI>().text = "$" + (Mathf.Pow(potion.priceUpgradesBase, potion.priceUpgrades)+potion.priceUpgradesStart);
+        text.GetComponent<TextMeshProUGUI>().text = "$" + (Mathf.Pow(potion.priceUpgradesBase, potion.priceUpgrades)+potion.priceUpgradesStart);
 
-        if(GlobalPotions.MoneyCount>=potion.orderAmount*potion.orderMultiplier+potion.orderMultiplier){
+        if(GlobalPotions.MoneyCount>=(Mathf.Pow(potion.priceUpgradesBase, potion.priceUpgrades)+potion.priceUpgradesStart)){
             overlayButton.SetActive(false);
             button.SetActive(true);
         }
 
-        if(GlobalPotions.MoneyCount<potion.orderAmount*potion.orderMultiplier+potion.orderMultiplier){
+        if(GlobalPotions.MoneyCount<(Mathf.Pow(potion.priceUpgradesBase, potion.priceUpgrades)+potion.priceUpgradesStart)){
             button.SetActive(false);
             overlayButton.SetActive(true);
             turnOffButton = false;
@@ -44,8 +45,9 @@ public class IncreasePotionOrder : MonoBehaviour
     }
 
     public void increasePotion(){
-        GlobalPotions.MoneyCount-=potion.orderAmount*potion.orderMultiplier+potion.orderMultiplier;
-        potion.orderAmount +=1;
+        GlobalPotions.MoneyCount-=(Mathf.Pow(potion.priceUpgradesBase, potion.priceUpgrades)+potion.priceUpgradesStart);
+        potion.price +=potion.priceIncrease;
+        potion.priceUpgrades+=1;
         turnOffButton=true;
 
     }

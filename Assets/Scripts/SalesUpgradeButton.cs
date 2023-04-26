@@ -11,8 +11,10 @@ public class SalesUpgradeButton : MonoBehaviour
     public GameObject overlayText;
     public GameObject button;
     public GameObject text;
-    public int sellPrice;
-    public static bool turnOffButton = false;
+    public bool turnOffButton = false;
+    public bool isSellingPotions = false;
+    public bool startSell = false;
+    public Potion potion;
 
     // Start is called before the first frame update
     void Start()
@@ -23,25 +25,49 @@ public class SalesUpgradeButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sellPrice  = (PurchaseLog.sellSpeed+1) *25;
-        overlayText.GetComponent<TextMeshProUGUI>().text = "Auto Sell - "+PurchaseLog.sellSpeed+"  $" + sellPrice;
-        text.GetComponent<TextMeshProUGUI>().text = "Auto Sell - "+PurchaseLog.sellSpeed+"  $" + sellPrice;
-        if(GlobalPotions.MoneyCount>=sellPrice){
+        overlayText.GetComponent<TextMeshProUGUI>().text = potion.sellSpeed +"  $" + (potion.sellSpeed*potion.orderMultiplier+potion.orderMultiplier);
+        text.GetComponent<TextMeshProUGUI>().text = potion.sellSpeed +"  $" + (potion.sellSpeed*potion.orderMultiplier+potion.orderMultiplier);
+
+        if(GlobalPotions.MoneyCount>=potion.sellSpeed*potion.orderMultiplier+potion.orderMultiplier){
             overlayButton.SetActive(false);
             button.SetActive(true);
         }
 
-        if(GlobalPotions.MoneyCount<sellPrice){
+        if(GlobalPotions.MoneyCount<potion.sellSpeed*potion.orderMultiplier+potion.orderMultiplier){
             button.SetActive(false);
             overlayButton.SetActive(true);
             turnOffButton = false;
         }
-
         if(turnOffButton == true)
         {
             button.SetActive(false);
             overlayButton.SetActive(true);
             turnOffButton = false;
         }
+        if(!isSellingPotions&&startSell){
+            isSellingPotions = true;
+            StartCoroutine(SellPotions());
+        }
     }
+
+    public void upgradeAutoSell(){
+        GlobalPotions.MoneyCount-=potion.sellSpeed*potion.orderMultiplier+potion.orderMultiplier;
+        startSell = true;
+        potion.sellSpeed +=1;
+        turnOffButton=true;
+
+    }
+    IEnumerator SellPotions()
+    {
+        if(potion.amount>0){
+            potion.amount -= 1;
+            GlobalPotions.MoneyCount += potion.price;
+        }
+
+        
+
+        yield return new WaitForSeconds(2f/(potion.sellSpeed+1));
+        isSellingPotions = false;
+    }
+    
 }

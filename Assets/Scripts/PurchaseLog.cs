@@ -29,10 +29,4 @@ public class PurchaseLog : MonoBehaviour
         
     }
 
-    public void StartAutoSell(){
-        Controller.GetComponent<AutoSell>().enabled=true;
-        GlobalPotions.MoneyCount-= (sellSpeed+1)*25;
-        sellSpeed+=1;
-        
-    }
 }

@@ -9,6 +9,12 @@ public class Potion : MonoBehaviour
     public int amount;
     public int orderAmount;
     public int orderMultiplier;
+    public int sellSpeed;
+
+    public int priceUpgrades;
+    public float priceUpgradesBase;
+    public int priceUpgradesStart;
+    public int priceIncrease;
 
     // Start is called before the first frame update
     void Start()

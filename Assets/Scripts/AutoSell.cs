@@ -7,10 +7,7 @@ public class AutoSell : MonoBehaviour
     public bool isSellingPotions = false;
 
     public Potion red;
-    public Potion green;
-    public Potion blue;
-    public Potion golden;
-    public Potion pink;
+
 
 
     // Start is called before the first frame update
@@ -35,11 +32,7 @@ public class AutoSell : MonoBehaviour
             red.amount -= 1;
             GlobalPotions.MoneyCount += red.price;
         }
-        
-        green.amount -= 1;
-        blue.amount -= 1;
-        golden.amount -= 1;
-        pink.amount -= 1;
+
         
 
         yield return new WaitForSeconds(2f/(PurchaseLog.sellSpeed+1));

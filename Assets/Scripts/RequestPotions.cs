@@ -19,7 +19,7 @@ public class RequestPotions : MonoBehaviour
         blue.amount += blue.orderAmount;
         golden.amount += golden.orderAmount;
         pink.amount += pink.orderAmount;
-        Controller.GetComponent<AutoOrder>().ResetTimer();
+        //Controller.GetComponent<AutoOrder>().ResetTimer();
 
     }
 
